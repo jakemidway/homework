@@ -10,17 +10,17 @@ export type UserType = {
   id: number;
   name: string;
   age: number;
-  address: AddressType; // пропиши типизацию
+  address: AddressType;
 };
 
 export type UsersObjectType = {
-  myFriends: UserType[]; // пропиши типизацию
+  myFriends: UserType[];
 };
 
 export const HW2 = () => {
 
-  // 1️⃣ Раскомментируйте JSX (UserList2.tsx) и вы увидите,
-  // что приложение начнет гореть красным и ругаться 😡
+  // ++++++++1️⃣ Раскомментируйте JSX (UserList2.tsx) и вы увидите,
+  // +++++++++что приложение начнет гореть красным и ругаться 😡
   // 2️⃣ Ваша задача: ❗ПОЧИНИТЬ ПРОЕКТ❗
   // - прописать типизацию, где необходимо
   // - починить все, что горит красным
@@ -46,10 +46,15 @@ export const HW2 = () => {
 
   let [currentUsers, setCurrentUsers] = useState<UsersObjectType>(users);
 
+  console.log(currentUsers)
+
   const filterUsers = () => {
-    const filteredUsers = 'НУЖНО ПРОФИЛЬТРОВАТЬ ДРУЗЕЙ. ОСТАВЛЯЕМ ТОЛЬКО ТЕХ, КОТОРЫЕ ЖИВУТ В ГОРОДЕ LOS ANGELES';
+    // +++++'НУЖНО ПРОФИЛЬТРОВАТЬ ДРУЗЕЙ. ОСТАВЛЯЕМ ТОЛЬКО ТЕХ, КОТОРЫЕ ЖИВУТ В ГОРОДЕ LOS ANGELES'
+    const filteredUsers = currentUsers.myFriends.filter(friend => friend.address.city === 'Los Angeles')
     setCurrentUsers({ myFriends: filteredUsers });
   };
+
+
 
   return (
     <div id={'hw02'}>
